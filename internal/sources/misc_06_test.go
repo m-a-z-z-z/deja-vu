@@ -2505,6 +2505,8 @@ func parseRegistryFixtureIn(t *testing.T, id, path, work string) []model.Session
 		sessions, err = ParseDeepSeekFile(path)
 	case "ante":
 		sessions, err = ParseAnteFile(path)
+	case "vibe":
+		sessions, err = ParseVibeFile(path)
 	default:
 		t.Fatalf("no conformance parser for %q", id)
 	}

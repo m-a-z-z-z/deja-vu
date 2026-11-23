@@ -228,6 +228,7 @@ func printSourcesTo(w io.Writer, dir string) {
 		{"commandcode", sources.CommandCodeRoot(), []string{sources.CommandCodeRoot()}, sources.CommandCodeSessionFiles, sources.LoadCommandCode},
 		{"clawcode", sources.ClawCodeRoot(), sources.ClawCodeRoots(), sources.ClawCodeSessionFiles, sources.LoadClawCode},
 		{"ante", sources.AnteRoot(), sources.AnteRoots(), sources.AnteSessionFiles, sources.LoadAnte},
+		{"vibe", sources.VibeRoot(), sources.VibeRoots(), sources.VibeSessionFiles, sources.LoadVibe},
 		{"zcode", sources.ZCodeRoot(), []string{sources.ZCodeRoot()}, sources.ZCodeSessionFiles, sources.LoadZCode},
 		{"gjc", sources.GjcRoot(), []string{sources.GjcRoot()}, sources.GjcSessionFiles, sources.LoadGjc},
 		{"continue", filepath.Join(sources.ContinueRoot(), "sessions"), []string{filepath.Join(sources.ContinueRoot(), "sessions")}, sources.ContinueSessionFiles, sources.LoadContinue},

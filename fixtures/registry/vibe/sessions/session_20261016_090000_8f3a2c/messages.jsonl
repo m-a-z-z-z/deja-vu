@@ -1,0 +1,3 @@
+{"role":"user","content":"Read the Vibe session store and index both engines"}
+{"role":"assistant","content":[{"type":"text","text":"Reading unified/<id>/CURRENT names the generation."},{"type":"text","text":"Its manifest lists the projection state and the journal after it."}]}
+{"role":"assistant","content":"The legacy engine is a messages.jsonl beside a meta.json; both are indexed."}

@@ -1,0 +1,14 @@
+{
+  "projection_state_version": 1,
+  "session_id": "sess01m9q4",
+  "snapshot_sequence": 2,
+  "watermark": 2,
+  "snapshot": {
+    "history": {
+      "entries": [
+        {"id":"entry_01","type":"message","role":"user","content":[{"type":"text","text":"Resume the projection and index the journal tail"}]},
+        {"id":"entry_02","type":"message","content":[{"type":"text","text":"Snapshot chunks and journal deltas rebuild the session."}]}
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "manifest_version": 1,
+  "session_id": "sess01m9q4",
+  "generation": "0000000000000002",
+  "created_at": "2026-10-16T10:04:00.125Z",
+  "snapshot_sequence": 2,
+  "execution_state": "recoverable",
+  "checkpoint": {"path": "checkpoint.json", "sha256": "6f2d5c1a"},
+  "runtime_state": {"path": "runtime-state.json", "sha256": "8e3b1f27"},
+  "projection_state": {"path": "projection-state.json", "sha256": "3c9a7d40"},
+  "recovery_journal_segment": {"path": "journal/0000000000000003.jsonl", "first_sequence": 3}
+}

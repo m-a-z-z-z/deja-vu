@@ -23,6 +23,7 @@ keeping real links inside a store out of the walk.
 | aider | `aider.go` | `.aider.chat.history.md` files under configured project roots |
 | Amp | `amp.go` | one JSON thread object per `~/.local/share/amp/threads/*.json` |
 | Ante | `ante.go` | JSONL event stream (`events.jsonl`), `meta.json` and `dialog.json` under `~/.ante/sessions` |
+| Mistral Vibe | `vibe.go` | unified event-sourced stores under `~/.vibe/logs/session/unified` (CURRENT pointer, generation manifests, pooled projection chunks, journal deltas) and legacy `messages.jsonl` beside `meta.json` |
 | Gemini CLI | `gemini.go` | JSON and JSONL chats under `~/.gemini/tmp` |
 | Cursor | `cursor.go` | SQLite state stores plus CLI agent transcripts |
 | Antigravity | `antigravity.go` | JSONL transcripts under `~/.gemini/antigravity*` |

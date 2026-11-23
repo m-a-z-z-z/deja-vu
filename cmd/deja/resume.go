@@ -445,6 +445,11 @@ func resumeHarnessCommand(s model.Session) (string, string, error) {
 		return existingDir(resumeRecordedDir(s)), "orca --resume " + s.ID, nil
 	case "ante":
 		return existingDir(resumeRecordedDir(s)), "ante --resume " + s.ID, nil
+	case "vibe":
+		// `vibe --resume <id>` accepts partial ids and reopens the session
+		// from anywhere (3.1.0 cli-rust/src/cli.rs); the cd keeps the agent
+		// in the project, when it is still there.
+		return existingDir(resumeRecordedDir(s)), "vibe --resume " + s.ID, nil
 	case "zcode":
 		// The terminal client for the ZCode runtime (zcode-app-cli 0.16.9,
 		// runtime 3.14.4) takes `--resume <sessionId>` with the sess_ id its
@@ -877,6 +882,8 @@ func resumeRecordedDir(s model.Session) string {
 		return sources.ClawCodeSessionDir(s.Path)
 	case "ante":
 		return sources.AnteSessionDir(s.Path)
+	case "vibe":
+		return sources.VibeSessionDir(s.Path)
 	case "reasonix":
 		if sources.ReasonixStore(s.Path) == "jsonl" {
 			return sources.ReasonixWorkspace(s.Path)

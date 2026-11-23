@@ -22,6 +22,7 @@ var named = map[string]int{
 	"antigravity": 111, // light blue
 	"copilot":     147, // lavender
 	"pi":          149, // lime
+	"vibe":        203, // salmon
 }
 
 // fallback colours every other harness, picked by a hash of its name so the

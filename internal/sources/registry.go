@@ -340,6 +340,30 @@ func harnessTable() []Harness { //nolint:funlen // one entry per supported harne
 			}},
 		},
 		{
+			// Mistral Vibe keeps its sessions under $VIBE_HOME/logs/session
+			// in two layouts: the unified engine's event-sourced store under
+			// unified/<id>/ (a CURRENT pointer, a generation manifest, a chunk-
+			// pooled projection snapshot and journal deltas) and the earlier
+			// engine's <prefix>_<date...>_<id>/messages.jsonl beside a meta.json.
+			Name: "vibe", Load: LoadVibe, Files: VibeSessionFiles,
+			Kinds: []FileKind{
+				{
+					// The unified store is rewritten generation by generation:
+				// no tail of CURRENT resumes on its own, so it is read whole.
+				Name:  "vibe-unified",
+				Match: IsVibeUnifiedCurrent,
+				Parse: fullParse(ParseVibeUnified),
+			},
+			{
+				Name:      "vibe",
+					Match:     IsVibeLegacyTranscript,
+					Parse:     fullParse(ParseVibeFile),
+					ParseFrom: offsetParse(ParseVibeFileFromOffset),
+					Sidecar:   besideSidecar("meta.json"),
+				},
+			},
+		},
+		{
 			Name: "gemini", Load: LoadGemini, Files: GeminiChatFiles,
 			Kinds: []FileKind{{
 				Name: "gemini",

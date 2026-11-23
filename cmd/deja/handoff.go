@@ -538,6 +538,9 @@ func handoffCommand(target, prompt string) ([]string, bool) {
 		return []string{"claw", "-p", prompt}, true
 	case "ante":
 		return []string{"ante", "-p", prompt}, true
+	case "vibe":
+		// Vibe's programmatic one-shot: -p prints the answer and exits.
+		return []string{"vibe", "-p", prompt}, true
 	default:
 		return nil, false
 	}
@@ -600,5 +603,5 @@ func pasteOnlyFooter(prefix string) string {
 func handoffTargets() []string {
 	return []string{"claude", "codex", "opencode", "cursor", "copilot", "copilot-chat", "gemini", "qwen", "antigravity", "aider", "pi", "senpi", "omp", "amp", "prime", "grok", "cline", "goose", "kimi", "crush",
 		"kilocode", "mimo", "omnigent", "orca", "continue", "commandcode", "codebuddy", "trae", "muse", "kiro", "gjc", "kimchi", "codewhale", "junie", "hermes", "openclaw", "deepseek", "reasonix", "zcode", "devin",
-		"mcode", "clawcode", "ante"}
+		"mcode", "clawcode", "ante", "vibe"}
 }

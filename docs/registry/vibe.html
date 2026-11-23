@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Mistral Vibe stores its history — session format</title>
+<meta name="description" content="Where Mistral Vibe writes its conversation history on disk, what the files contain, the quirks deja found in them, and when the format was last verified against a real store.">
+<link rel="canonical" href="https://vshulcz.github.io/deja-vu/registry/vibe.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Where Mistral Vibe stores its history — session format">
+<meta property="og:description" content="Where Mistral Vibe writes its conversation history on disk, what the files contain, the quirks deja found in them, and when the format was last verified against a real store.">
+<meta property="og:url" content="https://vshulcz.github.io/deja-vu/registry/vibe.html">
+<meta property="og:image" content="https://vshulcz.github.io/deja-vu/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" sizes="16x16" href="../assets/favicon.svg">
+<link rel="icon" type="image/svg+xml" sizes="any" href="../assets/icon.svg">
+<link rel="stylesheet" href="../assets/site.css">
+<meta name="author" content="vshulcz">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0d0b16">
+<meta name="color-scheme" content="dark light">
+<meta property="og:site_name" content="deja-vu">
+<meta name="twitter:title" content="Where Mistral Vibe stores its history — session format">
+<meta name="twitter:description" content="Where Mistral Vibe writes its conversation history on disk, what the files contain, the quirks deja found in them, and when the format was last verified against a real store.">
+<meta name="twitter:image" content="https://vshulcz.github.io/deja-vu/assets/og.png">
+<link rel="apple-touch-icon" href="../assets/icon.svg">
+<link rel="sitemap" type="application/xml" href="https://vshulcz.github.io/deja-vu/sitemap.xml">
+<link rel="describedby" type="text/markdown" href="https://vshulcz.github.io/deja-vu/llms.txt">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","author":{"@type":"Person","name":"vshulcz"},"description":"Where Mistral Vibe writes its conversation history on disk, what the files contain, the quirks deja found in them, and when the format was last verified against a real store.","headline":"Mistral Vibe session format","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"deja-vu","url":"https://vshulcz.github.io/deja-vu/"},"publisher":{"@type":"Person","name":"vshulcz"},"url":"https://vshulcz.github.io/deja-vu/registry/vibe.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://vshulcz.github.io/deja-vu/","name":"deja-vu","position":1},{"@type":"ListItem","item":"https://vshulcz.github.io/deja-vu/guide/harnesses.html","name":"Harnesses","position":2},{"@type":"ListItem","item":"https://vshulcz.github.io/deja-vu/registry/vibe.html","name":"Mistral Vibe session format","position":3}]}</script>
+</head>
+<body>
+<div class="glow"></div>
+<nav><a class="brand" href="../"><img src="../assets/icon.svg" alt="" width="22" height="22">deja-vu</a><span class="spacer"></span><a class="lnk" href="../">Home</a><a class="lnk" href="../guide/getting-started.html">Docs</a><a class="nav-cta" href="https://github.com/vshulcz/deja-vu"><span class="star-ic" aria-hidden="true">★</span>GitHub</a></nav>
+<div class="wrap"><div class="doc">
+<aside><a href="../">&larr; deja-vu</a><div class="grp">Guide</div><a href="../guide/getting-started.html">Getting started</a><a href="../guide/harnesses.html">Harnesses</a><div class="grp">Session formats</div><a href="README.html">All formats</a><a href="aider.html">aider</a><a href="amp.html">Amp</a><a href="ante.html">Ante</a><a href="antigravity.html">Antigravity</a><a href="cherrystudio.html">Cherry Studio</a><a href="claude-code.html">Claude Code</a><a href="clawcode.html">Claw Code</a><a href="cline.html">Cline</a><a href="codearts.html">CodeArts Desktop</a><a href="codebuddy.html">CodeBuddy Code</a><a href="codewhale.html">CodeWhale</a><a href="codex.html">Codex CLI</a><a href="commandcode.html">Command Code</a><a href="continue.html">Continue</a><a href="copilot.html">Copilot CLI</a><a href="crush.html">Crush</a><a href="cursor.html">Cursor</a><a href="deepseek.html">DeepSeek Harness</a><a href="devin.html">Devin CLI</a><a href="doubao.html">Doubao</a><a href="gjc.html">gajae-code</a><a href="gemini.html">Gemini CLI</a><a href="goose.html">Goose</a><a href="grok.html">Grok Build</a><a href="hermes.html">Hermes</a><a href="jetbrains.html">JetBrains AI Assistant</a><a href="junie.html">Junie</a><a href="kilocode.html">Kilo Code</a><a href="kimchi.html">Kimchi Coding</a><a href="kimi.html">Kimi Code</a><a href="kiro.html">Kiro</a><a href="mimo.html">MiMo-Code</a><a href="mcode.html">MiniMax Code</a><a href="vibe.html" aria-current="page">Mistral Vibe</a><a href="muse.html">Muse Code</a><a href="omnigent.html">Omnigent</a><a href="omp.html">omp (Oh My Pi)</a><a href="openclaw.html">OpenClaw</a><a href="opencode.html">opencode</a><a href="orca.html">Orca</a><a href="pi.html">pi</a><a href="prime.html">prime-agent (PrimeIntellect)</a><a href="qoder.html">Qoder</a><a href="qwen.html">Qwen Code</a><a href="reasonix.html">Reasonix</a><a href="roo.html">Roo Code</a><a href="senpi.html">Senpi</a><a href="teleagent.html">TeleAgent</a><a href="trae.html">TRAE CLI</a><a href="copilot-chat.html">VS Code Copilot Chat</a><a href="windsurf.html">Windsurf / Devin Desktop</a><a href="zcode.html">ZCode</a><a href="zed.html">Zed</a></aside>
+<article>
+<h1>Mistral Vibe session format</h1>
+<h2 id="store-and-files">Store and files</h2>
+<p>Mistral Vibe (<code>mistralai/mistral-vibe</code>) stores every session under</p>
+<p><code>${VIBE_HOME:-~/.vibe}/logs/session</code> (<code>session_logging.save_dir</code> in <code>~/.vibe/config.toml</code></p>
+<p>can move it). <code>DEJA_VIBE_ROOT</code> replaces the store root for deja without affecting where</p>
+<p>Vibe writes; <code>VIBE_HOME</code> and the extra roots under <code>DEJA_HOME_ROOTS</code> are honoured too.</p>
+<p>Since 2.26 the CLI writes two layouts, and a reader has to hold both.</p>
+<h3 id="unified-engine-the-default">Unified engine (the default)</h3>
+<p>One event-sourced store per session under <code>unified/&lt;session_id&gt;/</code>:</p>
+<ul>
+<li><code>CURRENT</code>: JSON pointer to the live generation (<code>session_id</code>, <code>generation</code>,</li>
+</ul>
+<p><code>snapshot_sequence</code>, <code>manifest_sha256</code>, <code>store_format_minor</code>).</p>
+<ul>
+<li><code>meta.json</code>: <code>SessionMetadata</code> (<code>session_id</code>, <code>parent_session_id</code>, <code>title</code>,</li>
+</ul>
+<p><code>start_time</code>, <code>end_time</code>, <code>bumped_at</code>, <code>environment.working_directory</code>,</p>
+<p><code>origin_directory</code>).</p>
+<ul>
+<li><code>generations/&lt;gen&gt;/manifest.json</code>: the files of that generation — <code>checkpoint</code>,</li>
+</ul>
+<p><code>runtime_state</code> and <code>projection_state</code> records (<code>path</code>, <code>sha256</code>, optional ordered</p>
+<p><code>chunks</code>), plus <code>recovery_journal_segment</code> and the <code>snapshot_sequence</code>.</p>
+<ul>
+<li><code>projection-state.json</code>: the projection snapshot; its <code>snapshot.history.entries</code></li>
+</ul>
+<p>hold the history. When the transcript was detached into the chunk pool, the</p>
+<p>document names it and the concatenated <code>chunks/&lt;sha256&gt;.json</code> arrays — each one a</p>
+<p>JSON array of entries — refill that list.</p>
+<ul>
+<li><code>journal/&lt;n&gt;.jsonl</code>: append-only records after the snapshot; each <code>projection_delta</code></li>
+</ul>
+<p>(and a <code>session_relocated</code>) carries ops — <code>append_entry</code>, <code>replace_entry</code> / <code>remove_entry</code></p>
+<p>by entry <code>id</code>, <code>set_history_entries</code> — replayed over the snapshot, in <code>sequence</code> order,</p>
+<p>from <code>snapshot_sequence + 1</code> on.</p>
+<p>A store minor a newer writer raised names a shape an older reader must not attempt; the</p>
+<p>reader tracks <code>store_format_minor</code> and stays lenient about unknown fields otherwise.</p>
+<p>Sub-agents leave no history of their own in this engine: the lead&#39;s transcript holds the</p>
+<p>spawn, the wait and the answer.</p>
+<h3 id="legacy-engine">Legacy engine</h3>
+<p><code>&lt;session_prefix&gt;_&lt;date&gt;_&lt;time&gt;_&lt;id&gt;/</code> (prefix <code>session</code> by default) with:</p>
+<ul>
+<li><code>messages.jsonl</code>: one <code>{&#34;role&#34;,&#34;content&#34;}</code> message per line, <code>content</code> a string or an</li>
+</ul>
+<p>array of text blocks; saved at the end of each step and holding no timestamps.</p>
+<ul>
+<li><code>meta.json</code>: the same <code>SessionMetadata</code> shape as the unified stores.</li>
+<li><code>agents/&lt;id&gt;/</code>: a sub-agent&#39;s own session; deja skips these trees.</li>
+</ul>
+<h2 id="records">Records</h2>
+<p>A replayed entry is typed by its <code>type</code>:</p>
+<ul>
+<li><code>message</code>: <code>user</code> or (implicitly) <code>assistant</code> speech; the <code>text</code> blocks of <code>content</code></li>
+</ul>
+<p>join into one message. The first user line seeds the title when <code>meta.json</code> omits it.</p>
+<ul>
+<li><code>reasoning</code>: the model thinking out loud; kept out of the transcript, as in every other</li>
+</ul>
+<p>harness here.</p>
+<ul>
+<li><code>effect</code>: a tool call. Its settled <code>display</code> (<code>settledVerb</code> / <code>settledMessage</code>, or</li>
+</ul>
+<p><code>verb</code> / <code>message</code>) becomes a <code>tool-output</code> record and a tool-call count;</p>
+<p><code>success: false</code> counts a tool error.</p>
+<ul>
+<li><code>notice</code>, <code>callback</code>, <code>checkpoint</code>: UI and lifecycle records with no conversation in</li>
+</ul>
+<p>them.</p>
+<p>Neither engine stamps the messages themselves, so read afterwards the turns are spread</p>
+<p>over the session&#39;s own <code>start_time</code> … <code>end_time</code> span; an entry that carries</p>
+<p><code>createdAt</code> keeps its own time.</p>
+<h2 id="wiring-and-resume">Wiring and resume</h2>
+<ul>
+<li><strong>Resume &amp; handoff</strong>: <code>deja resume</code> runs <code>vibe --resume &lt;id&gt;</code> in the recorded working</li>
+</ul>
+<p>directory; <code>deja handoff --to vibe --exec</code> runs <code>vibe -p &lt;packet&gt;</code>.</p>
+<ul>
+<li><strong>WriteBack</strong> refuses: the store belongs to Vibe&#39;s own active runtime and its journal</li>
+</ul>
+<p>is digest-chained.</p>
+<ul>
+<li><strong>Hooks, MCP, skills and rules</strong> are not wired for Vibe yet.</li>
+</ul>
+<h2 id="synthetic-fixtures">Synthetic fixtures</h2>
+<ul>
+<li><a href="../../fixtures/registry/vibe/sessions/session_20261016_090000_8f3a2c/"><code>fixtures/registry/vibe/sessions/session_20261016_090000_8f3a2c/</code></a></li>
+</ul>
+<p>(<code>messages.jsonl</code> beside <code>meta.json</code>) is the legacy conformer.</p>
+<ul>
+<li><a href="../../fixtures/registry/vibe/unified/sess01m9q4/"><code>fixtures/registry/vibe/unified/sess01m9q4/</code></a></li>
+</ul>
+<p>(<code>CURRENT</code>, <code>meta.json</code>, a generation manifest with its projection snapshot, and a</p>
+<p>journal whose deltas append an effect and a message) is the unified conformer.</p>
+<p><strong>Last verified:</strong> 2026-11-23 against mistralai/mistral-vibe 3.1.0</p>
+<p>(<code>harness/runtimes/python/python/mistralai_vibe_local_harness/vibe/_storage.py</code>,</p>
+<p><code>vibe/core/session/session_index.py</code>, <code>session_loader.py</code>,</p>
+<p><code>vibe/cli-rust/src/server/types.rs</code>, <code>effect.rs</code>, <code>cli.rs</code>)</p>
+
+<hr>
+<p>deja reads this format and 52 others, and turns what it finds into memory your
+agents can search. See the <a href="../guide/harnesses.html">harness matrix</a> for what is
+wired where, or <a href="../guide/getting-started.html">install it</a> and search your own
+history.</p>
+<p class="star-cta">Found this useful? <a href="https://github.com/vshulcz/deja-vu">Star deja-vu on GitHub</a>.</p>
+</article>
+</div>
+</div>
+<footer>deja-vu is MIT-licensed and runs on your machine. <a href="https://github.com/vshulcz/deja-vu">Source on GitHub</a> · <a href="../">Home</a></footer>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

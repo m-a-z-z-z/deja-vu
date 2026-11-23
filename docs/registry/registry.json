@@ -3307,7 +3307,8 @@
           "note": "internal/sources/teleagent.go reads the per-account OpenCode-schema stores"
         }
       }
-    },    {
+    },
+    {
       "id": "omnigent",
       "store_paths": [
         "${OMNIGENT_DATA_DIR:-~/.omnigent}/chat.db",
@@ -4701,6 +4702,110 @@
           "status": "no",
           "proof": "blocked",
           "note": "Zed 1.22.0 has no lifecycle hooks: zed#57890 and zed#52688 went to discussions and the hooks PR zed#52729 closed unmerged"
+        },
+        "reader": {
+          "status": "yes",
+          "proof": "fixture"
+        }
+      }
+    },
+    {
+      "id": "vibe",
+      "store_paths": [
+        "~/.vibe/logs/session/unified/<session_id>/CURRENT",
+        "~/.vibe/logs/session/<session_prefix>_<date>_<time>_<id>/messages.jsonl",
+        "${VIBE_HOME}/logs/session/unified/<session_id>/CURRENT",
+        "${DEJA_VIBE_ROOT}/unified/<session_id>/CURRENT",
+        "${DEJA_VIBE_ROOT}/session_*/messages.jsonl"
+      ],
+      "format_kind": "jsonl",
+      "fixture_paths": [
+        "fixtures/registry/vibe/sessions/session_20261016_090000_8f3a2c/messages.jsonl",
+        "fixtures/registry/vibe/unified/sess01m9q4/CURRENT"
+      ],
+      "parser_source": "internal/sources/vibe.go",
+      "last_verified": "2026-11-23",
+      "display_name": "Mistral Vibe",
+      "capabilities": {
+        "mcp": false,
+        "auto": false,
+        "skill": false,
+        "command": true,
+        "resume": true,
+        "handoff": "exec",
+        "prereq": ""
+      },
+      "gaps": {
+        "auto": {
+          "state": "unknown",
+          "why": "Mistral Vibe 3.1.0 config is ~/.vibe/config.toml with no documented lifecycle hook events; deja does not yet wire its hooks or MCP into it",
+          "source": "https://github.com/mistralai/mistral-vibe"
+        },
+        "mcp": {
+          "state": "unknown",
+          "why": "Vibe supports connectors in its own configuration; deja does not yet write the HTTP MCP server into it",
+          "source": "https://docs.mistral.ai/vibe/code/cli/configuration"
+        }
+      },
+      "surfaces": {
+        "digest": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "no deja-installed hook or compaction surface is wired for Vibe yet"
+        },
+        "prompt": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "no deja-installed hook surface is wired for Vibe yet"
+        },
+        "pre_tool": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "no deja-installed hook surface is wired for Vibe yet"
+        },
+        "failure": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "no deja-installed hook surface is wired for Vibe yet"
+        },
+        "compaction_reset": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "Vibe compaction markers are not documented; no compaction summary is extracted yet"
+        },
+        "compaction_capture": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "no deja-installed hook surface is wired for Vibe yet"
+        },
+        "compaction_packet": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "no deja-installed hook surface is wired for Vibe yet"
+        },
+        "mcp": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "Vibe's connector configuration is not wired by deja yet"
+        },
+        "handoff": {
+          "status": "yes",
+          "proof": "fixture"
+        },
+        "session_end": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "no deja-installed hook surface is wired for Vibe yet"
+        },
+        "rules": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "AGENTS.md routing for Vibe is not wired by deja yet"
+        },
+        "statusline": {
+          "status": "no",
+          "proof": "blocked",
+          "note": "Vibe has no documented statusline hook"
         },
         "reader": {
           "status": "yes",
