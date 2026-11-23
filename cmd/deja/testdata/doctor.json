@@ -325,6 +325,15 @@
       "indexed_sessions": 0
     },
     {
+      "name": "vibe",
+      "state": "missing",
+      "paths": [
+        "<tmp>/home/.vibe/logs/session"
+      ],
+      "files": 0,
+      "indexed_sessions": 0
+    },
+    {
       "name": "zcode",
       "state": "missing",
       "paths": [

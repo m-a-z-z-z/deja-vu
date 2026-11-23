@@ -125,6 +125,31 @@ func VibeSessionFiles() []string {
 	return out
 }
 
+// VibeSubagentFile reports whether p sits inside a legacy engine Vibe
+// session's agents tree. The unified engine keeps no sub-agent transcripts of
+// its own.
+func VibeSubagentFile(p string) bool { return vibeInAgentsDir(p) }
+
+// VibeSidecarFiles lists the meta.json sidecars beside the transcripts deja
+// already reads, so doctor does not report them as unread.
+func VibeSidecarFiles() []string {
+	var out []string
+	for _, root := range VibeRoots() {
+		if root == "" {
+			continue
+		}
+		out = append(out, walkFiles(root, func(p string) bool {
+			if !hasBase(p, "meta.json") {
+				return false
+			}
+			dir := filepath.Dir(p)
+			return IsVibeLegacyTranscript(filepath.Join(dir, "messages.jsonl")) ||
+				IsVibeUnifiedCurrent(filepath.Join(dir, "CURRENT"))
+		})...)
+	}
+	return out
+}
+
 // LoadVibe reads every Vibe session on this machine.
 func LoadVibe() []model.Session {
 	return parseFiles(VibeSessionFiles(), ParseVibeFile)

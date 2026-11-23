@@ -678,6 +678,8 @@ func TestHandoffCommandTable(t *testing.T) {
 		"orca":     {"orca", "P"},
 		"clawcode": {"claw", "-p", "P"},
 		"ante":     {"ante", "-p", "P"},
+		// vibe's programmatic one-shot: -p prints the answer and exits.
+		"vibe": {"vibe", "-p", "P"},
 	}
 	for target, want := range cases {
 		argv, ok := handoffCommand(target, "P")

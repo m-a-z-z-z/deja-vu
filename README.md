@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-<p align="center"><b>Shared local memory, session history search, cross-agent handoff, and code recovery across 52 coding agents.</b><br>
+<p align="center"><b>Shared local memory, session history search, cross-agent handoff, and code recovery across 53 coding agents.</b><br>
 Local inverted index in a single Go binary — zero LLM calls, 0.7–0.8 ms in-process lookups, ~4% index footprint.</p>
 
 <p align="center">English | <a href="docs/readme/README.zh.md">简体中文</a> | <a href="docs/readme/README.zh-TW.md">繁體中文</a> | <a href="docs/readme/README.ja.md">日本語</a> | <a href="docs/readme/README.ko.md">한국어</a> | <a href="docs/readme/README.es.md">Español</a> | <a href="docs/readme/README.pt.md">Português</a> | <a href="docs/readme/README.fr.md">Français</a> | <a href="docs/readme/README.de.md">Deutsch</a> | <a href="docs/readme/README.ru.md">Русский</a> | <a href="docs/readme/README.tr.md">Türkçe</a> | <a href="docs/readme/README.hi.md">हिन्दी</a></p>
@@ -35,7 +35,7 @@ opencode plugin add opencode-deja
 ```
 
 ```sh
-$ deja "jwt refresh token"             # lexical + structural search across 52 coding agents
+$ deja "jwt refresh token"             # lexical + structural search across 53 coding agents
 $ deja handoff --to codex              # transfer goal, decisions & open work across agents
 $ deja restore internal/auth/jwt.go    # recover an edit span replaced before git commit
 $ deja blame internal/auth/jwt.go:42   # trace which agent session wrote or replaced a line
@@ -345,7 +345,7 @@ deja bench read       # SQLite store parser scaling benchmark
 
 | Model | History before install | Capture step | Runtime dependency | File recovery |
 | --- | --- | --- | --- | --- |
-| **deja-vu** (transcript index) | Full existing stores across 52 harnesses | None | Single Go binary | `deja restore <path>` |
+| **deja-vu** (transcript index) | Full existing stores across 53 harnesses | None | Single Go binary | `deja restore <path>` |
 | Record-forward MCP servers | Starts empty from install | Explicit writes / observer hooks | Background worker / LLM calls | No |
 | Raw transcript grep | Full logs | None | Manual search, high noise | No |
 

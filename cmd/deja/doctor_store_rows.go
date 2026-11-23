@@ -265,6 +265,14 @@ func (r *doctorStoreRows) laterStores(sqlite bool) {
 	anteRoots := sources.AnteRoots()
 	r.filesSkippingIn("ante", sources.AnteRoot(), anteRoots, doctorAnyExists(anteRoots),
 		sources.AnteSessionFiles(), sources.AnteSubagentFile, sources.AnteSidecarFiles()...)
+	// Mistral Vibe keeps its sessions under $VIBE_HOME/logs/session in two
+	// layouts: the unified engine's CURRENT pointers and the earlier
+	// engine's messages.jsonl beside a meta.json. The legacy engine's
+	// agents/ trees are the runtime's own sub-agent sessions, not store
+	// drift; the meta.json sidecars are named beside the transcripts.
+	vibeRoots := sources.VibeRoots()
+	r.filesSkippingIn("vibe", sources.VibeRoot(), vibeRoots, doctorAnyExists(vibeRoots),
+		sources.VibeSessionFiles(), sources.VibeSubagentFile, sources.VibeSidecarFiles()...)
 	// ZCode has two stores, the way Kilo does: the project transcripts and the
 	// CLI's SQLite database. The count is the transcripts and the database is
 	// named beside them, or the newest "file" is a database the transcript

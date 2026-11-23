@@ -349,13 +349,13 @@ func harnessTable() []Harness { //nolint:funlen // one entry per supported harne
 			Kinds: []FileKind{
 				{
 					// The unified store is rewritten generation by generation:
-				// no tail of CURRENT resumes on its own, so it is read whole.
-				Name:  "vibe-unified",
-				Match: IsVibeUnifiedCurrent,
-				Parse: fullParse(ParseVibeUnified),
-			},
-			{
-				Name:      "vibe",
+					// no tail of CURRENT resumes on its own, so it is read whole.
+					Name:  "vibe-unified",
+					Match: IsVibeUnifiedCurrent,
+					Parse: fullParse(ParseVibeUnified),
+				},
+				{
+					Name:      "vibe",
 					Match:     IsVibeLegacyTranscript,
 					Parse:     fullParse(ParseVibeFile),
 					ParseFrom: offsetParse(ParseVibeFileFromOffset),
