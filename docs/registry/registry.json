@@ -4730,7 +4730,7 @@
         "mcp": false,
         "auto": false,
         "skill": false,
-        "command": true,
+        "command": false,
         "resume": true,
         "handoff": "exec",
         "prereq": ""
@@ -4744,6 +4744,16 @@
         "mcp": {
           "state": "unknown",
           "why": "Vibe supports connectors in its own configuration; deja does not yet write the HTTP MCP server into it",
+          "source": "https://docs.mistral.ai/vibe/code/cli/configuration"
+        },
+        "skill": {
+          "state": "unknown",
+          "why": "Vibe loads skills from ./.vibe/skills and ~/.vibe/skills; deja does not write its skill there yet",
+          "source": "https://docs.mistral.ai/vibe/code/cli/configuration"
+        },
+        "command": {
+          "state": "unknown",
+          "why": "deja knows no command file location to write for Vibe yet: its skills and slash commands load from .vibe/skills, not from a per-command path deja wires",
           "source": "https://docs.mistral.ai/vibe/code/cli/configuration"
         }
       },

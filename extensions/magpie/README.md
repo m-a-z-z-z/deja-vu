@@ -6,7 +6,7 @@ English | [简体中文](https://github.com/vshulcz/deja-vu/blob/main/extensions
 
 Part of **[★ vshulcz/deja-vu](https://github.com/vshulcz/deja-vu)** (**97.2% R@5** on LongMemEval-S) · [Website & live search](https://vshulcz.github.io/deja-vu/) · [Browser demo](https://vshulcz.github.io/deja-vu/view/)
 
-> Cross-agent session memory for Claude Code, Codex, Cursor, Gemini CLI, OpenClaw, Hermes, and fifty-one other coding agents in total — injected at the Magpie gateway with zero LLM dependencies.
+> Cross-agent session memory for Claude Code, Codex, Cursor, Gemini CLI, OpenClaw, Hermes, and fifty-two other coding agents in total — injected at the Magpie gateway with zero LLM dependencies.
 
 When you route multiple coding agents through a gateway, each client tracks only its own thread and loses context whenever you switch tools or start a fresh session. `@vshulcz/magpie-deja` recalls relevant prior sessions from your local `deja` BM25 index during [Magpie](https://github.com/yetone/magpie) gateway requests across OpenAI (`chat`, `responses`), Anthropic (`anthropic`), and Gemini (`gemini`) protocols.
 

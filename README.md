@@ -205,7 +205,7 @@ Reference: [CLI commands](https://vshulcz.github.io/deja-vu/guide/commands.html)
 All fifty-three supported coding agents share one index, CLI, and MCP server (`DEJA_*_ROOT` and upstream relocation env vars are honored; [session format registry](https://vshulcz.github.io/deja-vu/registry/README.html)). TRAE IDE transcripts live in an encrypted database, so `deja install trae-ide` wires MCP and skills (plus hooks under `trae-ide-auto` once enabled in IDE settings) without transcript ingestion.
 
 <!-- matrix:start -->
-aider &middot; Amp &middot; Ante &middot; Antigravity &middot; Cherry Studio &middot; Claude Code &middot; Claw Code &middot; Cline &middot; CodeArts Desktop &middot; CodeBuddy Code &middot; CodeWhale &middot; Codex CLI &middot; Command Code &middot; Continue &middot; Copilot CLI &middot; VS Code Copilot Chat &middot; Crush &middot; Cursor &middot; DeepSeek Harness &middot; Devin CLI &middot; Doubao &middot; Gemini CLI &middot; gajae-code &middot; Goose &middot; Grok Build &middot; Hermes &middot; JetBrains AI Assistant &middot; Junie &middot; Kilo Code &middot; Kimchi Coding &middot; Kimi Code &middot; Kiro &middot; MiniMax Code &middot; MiMo-Code &middot; Muse Code &middot; TeleAgent &middot; Omnigent &middot; omp (Oh My Pi) &middot; OpenClaw &middot; opencode &middot; Orca &middot; pi &middot; prime-agent (PrimeIntellect) &middot; Qoder &middot; Qwen Code &middot; Reasonix &middot; Roo Code &middot; Senpi &middot; TRAE CLI &middot; Windsurf / Devin Desktop &middot; ZCode &middot; Zed.
+aider &middot; Amp &middot; Ante &middot; Antigravity &middot; Cherry Studio &middot; Claude Code &middot; Claw Code &middot; Cline &middot; CodeArts Desktop &middot; CodeBuddy Code &middot; CodeWhale &middot; Codex CLI &middot; Command Code &middot; Continue &middot; Copilot CLI &middot; VS Code Copilot Chat &middot; Crush &middot; Cursor &middot; DeepSeek Harness &middot; Devin CLI &middot; Doubao &middot; Gemini CLI &middot; gajae-code &middot; Goose &middot; Grok Build &middot; Hermes &middot; JetBrains AI Assistant &middot; Junie &middot; Kilo Code &middot; Kimchi Coding &middot; Kimi Code &middot; Kiro &middot; MiniMax Code &middot; MiMo-Code &middot; Muse Code &middot; TeleAgent &middot; Omnigent &middot; omp (Oh My Pi) &middot; OpenClaw &middot; opencode &middot; Orca &middot; pi &middot; prime-agent (PrimeIntellect) &middot; Qoder &middot; Qwen Code &middot; Reasonix &middot; Roo Code &middot; Senpi &middot; TRAE CLI &middot; Windsurf / Devin Desktop &middot; ZCode &middot; Zed &middot; Mistral Vibe.
 
 <details>
 <summary>What each one supports</summary>
@@ -264,6 +264,7 @@ aider &middot; Amp &middot; Ante &middot; Antigravity &middot; Cherry Studio &mi
 | Windsurf / Devin Desktop | ✅ | ⚠ | ✅ | ✅ | ✕ | paste | none |
 | ZCode | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | sqlite3 for the CLI database |
 | Zed | ✅ | ✕ | ✅ | ✅ | ✕ | paste | sqlite3 + zstd |
+| Mistral Vibe | ? | ? | ? | ? | ✅ | ✅ | — |
 
 ✅ works &middot; — possible, not built yet &middot; ✕ the harness has no such mechanism &middot; ⚠ waiting on the harness itself &middot; ? not investigated
 
